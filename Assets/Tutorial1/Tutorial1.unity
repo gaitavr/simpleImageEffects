@@ -2296,7 +2296,6 @@ GameObject:
   - component: {fileID: 183482333}
   - component: {fileID: 183482334}
   - component: {fileID: 183482332}
-  - component: {fileID: 183482335}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -2380,7 +2379,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e582ee6f8cf1fc45a0a4d6d4cf5d060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraMode: 0
 --- !u!54 &183482333
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2404,25 +2402,12 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 183482328}
-  m_Material: {fileID: 13400000, guid: 5346b20099383f546a14e0304006d6f5, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &183482335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 183482328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 978580385951c3144b8290466b560837, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _shader: {fileID: 4800000, guid: 9a396d6b4a75d2c48a5db6d0d30502d0, type: 3}
 --- !u!1001 &184575315
 PrefabInstance:
   m_ObjectHideFlags: 0
