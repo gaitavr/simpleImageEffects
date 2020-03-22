@@ -2296,6 +2296,7 @@ GameObject:
   - component: {fileID: 183482333}
   - component: {fileID: 183482334}
   - component: {fileID: 183482332}
+  - component: {fileID: 183482335}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -2360,13 +2361,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 183482328}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.2580603, z: 0, w: 0.9661289}
   m_LocalPosition: {x: 81, y: 4.79, z: -40.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -29.91, z: 0}
 --- !u!114 &183482332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2376,9 +2377,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 183482328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e582ee6f8cf1fc45a0a4d6d4cf5d060, type: 3}
+  m_Script: {fileID: 11500000, guid: b381f8881fa7bba4bbe0d340d3dbf719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveSpeed: 10
+  _rotationSpeed: 3
 --- !u!54 &183482333
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2408,6 +2411,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &183482335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183482328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57532f77177e2bc48869d09c21cc2062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shader: {fileID: 4800000, guid: bb2084b572856e94ea6bb630a24d57b7, type: 3}
 --- !u!1001 &184575315
 PrefabInstance:
   m_ObjectHideFlags: 0
