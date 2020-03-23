@@ -6,7 +6,7 @@ public class SimpleFilter : MonoBehaviour
 {
     [SerializeField] private Shader _shader;
 
-    private Material _mat;
+    protected Material _mat;
 
     private bool _useFilter = true;
 
@@ -21,6 +21,13 @@ public class SimpleFilter : MonoBehaviour
         {
             _useFilter = !_useFilter;
         }
+
+        OnUpdate();
+    }
+
+    protected virtual void OnUpdate()
+    {
+
     }
 
     private void OnRenderImage(RenderTexture src, RenderTexture dst)

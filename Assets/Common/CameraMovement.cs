@@ -19,7 +19,7 @@ public class CameraMovement : MonoBehaviour
         _rigidbody.useGravity = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
-
+    
     private void Update()
     {
         _rotation += new Vector2(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"));
@@ -35,4 +35,5 @@ public class CameraMovement : MonoBehaviour
     {
         _rigidbody.velocity = transform.TransformDirection(_moveVector);
     }
+
 }
