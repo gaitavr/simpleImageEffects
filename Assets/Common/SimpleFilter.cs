@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SimpleFilter : MonoBehaviour
 {
@@ -32,6 +30,7 @@ public class SimpleFilter : MonoBehaviour
 
     private void OnRenderImage(RenderTexture src, RenderTexture dst)
     {
+        src.wrapMode = TextureWrapMode.Repeat;
         if (_useFilter)
         {
             Graphics.Blit(src, dst, _mat);
