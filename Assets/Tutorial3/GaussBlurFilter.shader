@@ -13,6 +13,7 @@
 
         Pass
         {
+			Name "BlurPass"
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag

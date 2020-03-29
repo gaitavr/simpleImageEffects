@@ -32,11 +32,16 @@ public class SimpleFilter : MonoBehaviour
     {
         if (_useFilter)
         {
-            Graphics.Blit(src, dst, _mat);
+            UseFilter(src, dst);
         }
         else
         {
             Graphics.Blit(src, dst);
         }
+    }
+
+    protected virtual void UseFilter(RenderTexture src, RenderTexture dst)
+    {
+        Graphics.Blit(src, dst, _mat);
     }
 }
