@@ -3,7 +3,7 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-		_Kernel("Kernel Size", float) = 15
+		_Kernel("Kernel Size", int) = 15
     }
     SubShader
     {
@@ -122,7 +122,7 @@
 				col = lerp(col, regionD.mean, testVal);
 
 				fixed3 hsvCol = rgb2hsv(col);
-				hsvCol.y *= 2;
+				hsvCol.y *= 3;
 				col = hsv2rgb(hsvCol);
 
 				return fixed4(col, 1.0);
