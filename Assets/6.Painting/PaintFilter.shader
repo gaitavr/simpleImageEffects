@@ -1,9 +1,9 @@
-﻿Shader "Hidden/PaintingFilter"
+﻿Shader "Hidden/PaintFilter"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-		_Kernel("Kernel Size", int) = 15
+		_Kernel("Kernel size", int) = 15
     }
     SubShader
     {
@@ -39,8 +39,8 @@
             }
 
             sampler2D _MainTex;
-			float2 _MainTex_TexelSize;
 			int _Kernel;
+			float2 _MainTex_TexelSize;
 
 			struct region
 			{
@@ -48,10 +48,9 @@
 				float variance;
 			};
 
-			region calcRegion(int2 lower, int2 upper, int samples, float2 uv)
+			region calculateRegion(int2 lower, int2 upper, int samples, float2 uv)
 			{
 				region r;
-
 				float3 sum = 0.0;
 				float3 squareSum = 0.0;
 
@@ -59,7 +58,7 @@
 				{
 					for(int y = lower.y; y <= upper.y; ++y)
 					{
-						fixed2 offset = fixed2(_MainTex_TexelSize.y * x, _MainTex_TexelSize.y * y);
+						fixed2 offset = fixed2(_MainTex_TexelSize.x * x, _MainTex_TexelSize.y * y);
 						fixed3 col = tex2D(_MainTex, uv + offset);
 
 						sum += col;
@@ -100,10 +99,10 @@
 
 				int samples = (upper + 1) * (upper + 1);
 
-				region regionA = calcRegion(int2(lower, lower), int2(0, 0), samples, i.uv);
-				region regionB = calcRegion(int2(0, lower), int2(upper, 0), samples, i.uv);
-				region regionC = calcRegion(int2(lower, 0), int2(0, upper), samples, i.uv);
-				region regionD = calcRegion(int2(0, 0), int2(upper, upper), samples, i.uv);
+				region regionA = calculateRegion(int2(lower, lower), int2(0, 0), samples, i.uv);
+				region regionB = calculateRegion(int2(0, lower), int2(upper, 0), samples, i.uv);
+				region regionC = calculateRegion(int2(lower, 0), int2(0, upper), samples, i.uv);
+				region regionD = calculateRegion(int2(0, 0), int2(upper, upper), samples, i.uv);
 
 				fixed3 col = regionA.mean;
 				fixed minVar = regionA.variance;
@@ -121,9 +120,9 @@
 				testVal = step(regionD.variance, minVar);
 				col = lerp(col, regionD.mean, testVal);
 
-				fixed3 hsvCol = rgb2hsv(col);
-				hsvCol.y *= 3;
-				col = hsv2rgb(hsvCol);
+				fixed3 hasvCol = rgb2hsv(col);
+				hasvCol.y *= 2;
+				col = hsv2rgb(hasvCol);
 
 				return fixed4(col, 1.0);
             }
