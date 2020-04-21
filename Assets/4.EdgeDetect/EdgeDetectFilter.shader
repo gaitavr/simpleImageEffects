@@ -79,7 +79,5 @@
             }
             ENDCG
         }
-
-		UsePass "Hidden/GaussBlurFilter/BlurPass"
     }
 }
