@@ -11,6 +11,12 @@ public class SimpleFilter : MonoBehaviour
     private void Awake()
     {
         _mat = new Material(_shader);
+        Init();
+    }
+
+    protected virtual void Init()
+    {
+
     }
 
     private void Update()

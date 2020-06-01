@@ -11,6 +11,7 @@
 
         Pass
         {
+            Name "Edge"
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
