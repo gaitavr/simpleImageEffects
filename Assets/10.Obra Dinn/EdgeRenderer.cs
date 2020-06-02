@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EdgeVisualizer : MonoBehaviour
+public class EdgeRenderer : MonoBehaviour
 {
     [SerializeField]
     private float _sensitivityDepth = 1.0f;

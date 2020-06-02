@@ -54,20 +54,20 @@
 
             fixed4 frag(v2f i) : SV_Target
             {
-                float3 col = tex2D(_MainTex, i.uv).rgb;
-                float3 edged = tex2D(_Edged, i.uv).rgb;
-                float lum = dot(col, greyScale);
+                float3 returnCol = tex2D(_Edged, i.uv).rgb;
+
+                float3 mainCol = tex2D(_MainTex, i.uv).rgb;
+                float mainLum = dot(mainCol, greyScale);
 
                 float2 noiseUV = i.uv * _NoiseTex_TexelSize.xy * _MainTex_TexelSize.zw;
-                noiseUV += float2(_XOffset, _YOffset);
-                float3 threshold = tex2D(_NoiseTex, noiseUV);
-                float thresholdLum = 1 - dot(threshold, greyScale);
+                float3 noiseCol = tex2D(_NoiseTex, noiseUV);
+                float noiseLum = 1 - dot(noiseCol, greyScale);
 
-                float rampVal = lum < thresholdLum ? thresholdLum - lum : 1.0f;
-                
-                float3 rgb = tex2D(_ColorRampTex, float2(rampVal, 0.5f));
-                rgb += edged * (1 - lum);
-                return float4(rgb, 1.0f);
+                float rampVal = mainLum < noiseLum ? noiseLum - mainLum - 0.15 : 0.99;
+                returnCol += tex2D(_ColorRampTex, float2(rampVal, 0.5f));
+
+                returnCol = clamp(returnCol, 0.0, 0.88);
+                return float4(returnCol, 1.0f);
             }
             ENDCG
         }
