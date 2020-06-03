@@ -224,6 +224,8 @@ MonoBehaviour:
   _shader: {fileID: 4800000, guid: c4966d9c3a0de9246bde14c946d00511, type: 3}
   _noiseTexture: {fileID: 2800000, guid: e8ba9ce27437ccb4fa0deba4b0286afa, type: 3}
   _rampTexture: {fileID: 2800000, guid: 24ee272aba6254949831d5d6d7853ea6, type: 3}
+  _rampTexture2: {fileID: 2800000, guid: c12ba496d8d278247bec2c3014e92bd7, type: 3}
+  _noiseTexture2: {fileID: 2800000, guid: 20b3f317dc27e9a43b2c3ee4182bfc49, type: 3}
 --- !u!114 &1058402509
 MonoBehaviour:
   m_ObjectHideFlags: 0

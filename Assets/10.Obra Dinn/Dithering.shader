@@ -39,7 +39,6 @@
             }
 
             uniform sampler2D _MainTex;
-            uniform sampler2D _Edged;
             uniform float4 _MainTex_TexelSize;
 
             uniform sampler2D _NoiseTex;
@@ -47,27 +46,25 @@
 
             uniform sampler2D _ColorRampTex;
 
-            uniform float _XOffset;
-            uniform float _YOffset;
+            static float3 _greyScale = float3(0.299, 0.587, 0.114);
 
-            static float3 greyScale = float3(0.299f, 0.587f, 0.114f);
+            uniform sampler2D _EdgedTex;
 
             fixed4 frag(v2f i) : SV_Target
             {
-                float3 returnCol = tex2D(_Edged, i.uv).rgb;
-
-                float3 mainCol = tex2D(_MainTex, i.uv).rgb;
-                float mainLum = dot(mainCol, greyScale);
+                half3 returnCol = tex2D(_EdgedTex, i.uv).rgb;
+                fixed3 mainCol = tex2D(_MainTex, i.uv).rgb;
+                float mainLum = dot(mainCol, _greyScale);
 
                 float2 noiseUV = i.uv * _NoiseTex_TexelSize.xy * _MainTex_TexelSize.zw;
-                float3 noiseCol = tex2D(_NoiseTex, noiseUV);
-                float noiseLum = 1 - dot(noiseCol, greyScale);
+                fixed3 noiseCol = tex2D(_NoiseTex, noiseUV);
+                float noiseLum = 1 - dot(noiseCol, _greyScale);
 
-                float rampVal = mainLum < noiseLum ? noiseLum - mainLum - 0.15 : 0.99;
-                returnCol += tex2D(_ColorRampTex, float2(rampVal, 0.5f));
+                float rampVal = mainLum < noiseLum ? noiseLum - mainLum - 0.15: 0.99;
+                returnCol += tex2D(_ColorRampTex, float2(rampVal, 0.5));
 
                 returnCol = clamp(returnCol, 0.0, 0.88);
-                return float4(returnCol, 1.0f);
+                return float4(returnCol, 1.0);
             }
             ENDCG
         }
