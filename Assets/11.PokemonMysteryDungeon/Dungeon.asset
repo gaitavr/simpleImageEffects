@@ -1352,7 +1352,7 @@ MonoBehaviour:
     value: 0.33
   Strength:
     overrideState: 1
-    value: 0.218
+    value: 0.292
   Tiling:
     overrideState: 1
     value: 8
